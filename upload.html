@@ -7,11 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #040717; color: #f3f4f6; min-height: 100vh; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #040717;
+            color: #f3f4f6;
+            background-image: radial-gradient(circle at 50% 20%, #0d163d 0%, #040717 80%);
+            min-height: 100vh;
+        }
         .brand-title { font-family: 'Cinzel', serif; }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body class="flex items-center justify-center p-4 min-h-screen">
 
     <!-- Passcode Gate -->
     <div id="auth-box" class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-8 shadow-2xl text-center">
@@ -24,7 +30,7 @@
         </div>
     </div>
 
-    <!-- Upload Panel -->
+    <!-- Upload Panel (Hidden until unlocked) -->
     <div id="upload-panel" class="hidden bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl my-8">
         <div class="flex justify-between items-center mb-6 border-b border-indigo-900 pb-4">
             <div>
@@ -62,15 +68,14 @@
             </div>
 
             <div class="flex justify-end gap-3 pt-4">
-                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-semibold uppercase tracking-wider hover:from-emerald-500 hover:to-teal-500 transition shadow-lg">Save & Publish Product</button>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-semibold uppercase tracking-wider hover:from-emerald-500 hover:to-teal-500 transition shadow-lg">Save & Add Product</button>
             </div>
         </form>
 
-        <!-- Sync / Export Section for Customers -->
         <div class="mt-8 pt-6 border-t border-indigo-900">
             <h4 class="text-xs font-semibold uppercase text-amber-300 mb-2">Sync Store for Customers</h4>
-            <p class="text-xs text-gray-400 mb-3">After uploading new products, click below to generate your updated store file, then replace `index.html` on GitHub so customers see it instantly.</p>
-            <button onclick="exportStore()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow">📥 Download Synced index.html for GitHub</button>
+            <p class="text-xs text-gray-400 mb-3">After uploading your products, click below to generate your updated store file. Upload that file as `index.html` on GitHub so customers see your changes instantly on mobile and laptop.</p>
+            <button onclick="exportStore()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow">📥 Download Synced index.html for GitHub</button>
         </div>
 
         <div class="mt-8 pt-6 border-t border-indigo-900">
@@ -149,7 +154,7 @@
 
                     document.getElementById('product-form').reset();
                     renderManageList();
-                    alert('Product uploaded! Remember to click "Download Synced index.html" below to update your customer store.');
+                    alert('Product added successfully! Now click "Download Synced index.html for GitHub" below to update your store.');
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
@@ -185,11 +190,12 @@
 
         function exportStore() {
             let products = JSON.parse(localStorage.getItem('rainbow_diwali_products')) || [];
-            // Generates the index.html file with current products embedded
-            fetch('index.html')
-                .then(() => {
-                    // Create a downloadable index.html containing the products array
-                    const htmlContent = `<!DOCTYPE html>
+            if (products.length === 0) {
+                alert('Please upload at least one product before downloading!');
+                return;
+            }
+
+            const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -337,16 +343,15 @@
 </body>
 </html>`;
 
-                    const blob = new Blob([htmlContent], { type: 'text/html' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'index.html';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    alert('Synced index.html downloaded successfully! Upload this file to your GitHub repository to update your customers instantly.');
-                });
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            alert('Synced index.html downloaded successfully! Upload this file to your GitHub repository to update your customers instantly.');
         }
     </script>
 </body>
