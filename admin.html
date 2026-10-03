@@ -11,23 +11,21 @@
         .brand-title { font-family: 'Cinzel', serif; }
     </style>
 </head>
-<body class="bg-[#040717] min-h-screen">
+<body class="bg-[#040717] min-h-screen flex items-center justify-center p-4">
 
-    <!-- Full Screen Secure Passcode Overlay -->
-    <div id="auth-box" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background-color: #040717; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-        <div class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-8 shadow-2xl text-center">
-            <h3 class="text-xl font-bold text-amber-300 brand-title mb-2">Restricted Area</h3>
-            <p class="text-xs text-gray-400 mb-6">Enter owner passcode to access product uploader.</p>
-            <input type="password" id="passcode-input" placeholder="Passcode" onkeydown="if(event.key === 'Enter') verifyPasscode();" class="w-full bg-indigo-950/80 border border-indigo-800 rounded-xl p-3 text-sm text-white text-center mb-4 focus:outline-none focus:border-amber-400">
-            <button type="button" onclick="verifyPasscode()" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold tracking-wider uppercase transition cursor-pointer">Unlock Portal</button>
-            <div class="mt-6">
-                <a href="index.html" class="text-xs text-indigo-400 underline">← Return to Public Store</a>
-            </div>
+    <!-- Passcode Gate -->
+    <div id="auth-box" class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-8 shadow-2xl text-center">
+        <h3 class="text-xl font-bold text-amber-300 brand-title mb-2">Restricted Area</h3>
+        <p class="text-xs text-gray-400 mb-6">Enter owner passcode to access product uploader.</p>
+        <input type="password" id="passcode-input" placeholder="Passcode" class="w-full bg-indigo-950/80 border border-indigo-800 rounded-xl p-3 text-sm text-white text-center mb-4 focus:outline-none focus:border-amber-400">
+        <button id="unlock-btn" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold tracking-wider uppercase transition cursor-pointer">Unlock Portal</button>
+        <div class="mt-6">
+            <a href="index.html" class="text-xs text-indigo-400 underline">← Return to Public Store</a>
         </div>
     </div>
 
-    <!-- Upload Panel (Revealed after passcode) -->
-    <div id="upload-panel" class="hidden max-w-xl mx-auto p-6 sm:p-8 my-12 bg-[#0b102b] border border-indigo-800/80 rounded-3xl shadow-2xl relative z-10">
+    <!-- Upload Panel (Hidden initially) -->
+    <div id="upload-panel" class="hidden bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl my-8">
         <div class="flex justify-between items-center mb-6 border-b border-indigo-900 pb-4">
             <div>
                 <h3 class="text-xl font-bold text-amber-300 brand-title">Owner Upload Portal</h3>
@@ -36,7 +34,7 @@
             <a href="index.html" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-950 text-indigo-300 border border-indigo-800">View Store ↗</a>
         </div>
         
-        <form id="product-form" onsubmit="handleProductSubmit(event)" class="space-y-4">
+        <form id="product-form" class="space-y-4">
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Product Name</label>
                 <input type="text" id="p-name" required placeholder="e.g. Royal Crystal Diya Set" class="w-full bg-indigo-950/60 border border-indigo-800/80 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-purple-500">
@@ -77,7 +75,7 @@
         <div class="mt-8 pt-6 border-t border-indigo-900">
             <h4 class="text-xs font-semibold uppercase text-amber-300 mb-2">Sync Store for Customers</h4>
             <p class="text-xs text-gray-400 mb-3">Click below to download your updated store file after adding products, then upload it as `index.html` on GitHub.</p>
-            <button type="button" onclick="exportStore()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow cursor-pointer">📥 Download Synced index.html</button>
+            <button id="export-btn" type="button" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow cursor-pointer">📥 Download Synced index.html</button>
         </div>
 
         <div class="mt-8 pt-6 border-t border-indigo-900">
@@ -87,18 +85,25 @@
     </div>
 
     <script>
-        function verifyPasscode() {
+        document.getElementById('unlock-btn').addEventListener('click', function() {
             const val = document.getElementById('passcode-input').value.trim();
             if (val === 'Ilovarainbowwithoutcolors') {
                 document.getElementById('auth-box').style.display = 'none';
                 document.getElementById('upload-panel').classList.remove('hidden');
+                document.body.classList.remove('flex', 'items-center', 'justify-center', 'p-4');
                 renderManageList();
             } else {
                 alert('Incorrect passcode!');
             }
-        }
+        });
 
-        function handleProductSubmit(e) {
+        document.getElementById('passcode-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('unlock-btn').click();
+            }
+        });
+
+        document.getElementById('product-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('p-name').value;
             const price = parseFloat(document.getElementById('p-price').value);
@@ -123,11 +128,11 @@
 
                     document.getElementById('product-form').reset();
                     renderManageList();
-                    alert('Product added! Now click "Download Synced index.html" below.');
+                    alert('Product added successfully!');
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
-        }
+        });
 
         function renderManageList() {
             let products = JSON.parse(localStorage.getItem('rainbow_diwali_products')) || [];
@@ -148,16 +153,16 @@
             list.innerHTML = html;
         }
 
-        function deleteProduct(id) {
+        window.deleteProduct = function(id) {
             if (confirm('Delete this product?')) {
                 let products = JSON.parse(localStorage.getItem('rainbow_diwali_products')) || [];
                 products = products.filter(p => p.id !== id);
                 localStorage.setItem('rainbow_diwali_products', JSON.stringify(products));
                 renderManageList();
             }
-        }
+        };
 
-        function exportStore() {
+        document.getElementById('export-btn').addEventListener('click', function() {
             let products = JSON.parse(localStorage.getItem('rainbow_diwali_products')) || [];
             if (products.length === 0) {
                 alert('Please upload at least one product first!');
@@ -319,7 +324,7 @@
             a.click();
             document.body.removeChild(a);
             alert('Synced index.html downloaded! Upload this to GitHub.');
-        }
+        });
     </script>
 </body>
 </html>
