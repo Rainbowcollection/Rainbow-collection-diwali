@@ -26,8 +26,8 @@
         </div>
     </div>
 
-    <!-- Background Store / Upload Panel (Revealed after passcode) -->
-    <div id="upload-panel" class="hidden max-w-xl mx-auto p-6 sm:p-8 my-12 bg-[#0b102b] border border-indigo-800/80 rounded-3xl shadow-2xl">
+    <!-- Upload Panel (Revealed after passcode) -->
+    <div id="upload-panel" class="hidden max-w-xl mx-auto p-6 sm:p-8 my-12 bg-[#0b102b] border border-indigo-800/80 rounded-3xl shadow-2xl relative z-10">
         <div class="flex justify-between items-center mb-6 border-b border-indigo-900 pb-4">
             <div>
                 <h3 class="text-xl font-bold text-amber-300 brand-title">Owner Upload Portal</h3>
@@ -90,7 +90,7 @@
         function verifyPasscode() {
             const val = document.getElementById('passcode-input').value;
             if (val === 'Ilovarainbowwithoutcolors') {
-                document.getElementById('auth-box').classList.add('hidden');
+                document.getElementById('auth-box').style.display = 'none';
                 document.getElementById('upload-panel').classList.remove('hidden');
                 renderManageList();
             } else {
@@ -124,7 +124,7 @@
 
                     document.getElementById('product-form').reset();
                     renderManageList();
-                    alert('Product added! Now click "Download Synced index.html" below.');
+                    alert('Product added successfully! Now click "Download Synced index.html" below.');
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
