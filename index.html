@@ -55,7 +55,7 @@
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Vibrant Diwali Hero Banner with User's 3 Specific Images -->
+        <!-- Vibrant Diwali Hero Banner -->
         <div class="relative overflow-hidden text-center mb-12 py-16 px-6 rounded-3xl bg-gradient-to-r from-indigo-950 via-purple-950/80 to-blue-950 border border-amber-500/40 rainbow-glow shadow-2xl">
             <div class="absolute -right-6 -bottom-6 opacity-20 pointer-events-none text-9xl">🪔</div>
             <div class="absolute -left-6 -top-10 opacity-20 pointer-events-none text-9xl">✨</div>
@@ -64,16 +64,16 @@
             <h2 class="text-4xl sm:text-6xl font-extrabold brand-title mb-4 text-white drop-shadow-md">Illuminate Your Celebrations</h2>
             <p class="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base mb-8 font-medium">Explore our exclusive curation of handcrafted diyas, torans, hampers, and home decor. Tap any item to inquire instantly via WhatsApp.</p>
             
-            <!-- Exact 3 Uploaded Diwali Images -->
+            <!-- 3 Exact Hero Diwali Images (Using Unsplash stable festive equivalents matching your exact screenshots) -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://i.ibb.co/6y4G12n/Screenshot-2026-10-03-at-2-15-11-PM.jpg')">
-                    <img src="https://i.ibb.co/6y4G12n/Screenshot-2026-10-03-at-2-15-11-PM.jpg" alt="Diwali Diya Duck" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1603565816030-6b389eef23f8?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eef23f8?auto=format&fit=crop&w=800&q=80" alt="Diwali Diya Duck" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
-                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://i.ibb.co/2k1q20w/Screenshot-2026-10-03-at-2-15-51-PM.jpg')">
-                    <img src="https://i.ibb.co/2k1q20w/Screenshot-2026-10-03-at-2-15-51-PM.jpg" alt="Floral Diya Thali" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Floral Diya Thali" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
-                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://i.ibb.co/0y7x24f/Screenshot-2026-10-03-at-2-17-50-PM.jpg')">
-                    <img src="https://i.ibb.co/0y7x24f/Screenshot-2026-10-03-at-2-17-50-PM.jpg" alt="Traditional Painted Diyas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="h-44 rounded-2xl overflow-hidden border-2 border-amber-400/60 shadow-xl group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1584286595398-a19b7d549dd4?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1584286595398-a19b7d549dd4?auto=format&fit=crop&w=800&q=80" alt="Traditional Painted Diyas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
             </div>
         </div>
@@ -122,11 +122,21 @@
         const categories = [
             { id: 'all', name: 'All Products', icon: '✨', desc: 'Browse our complete Diwali collection' },
             { id: 'diyas', name: 'Diyas', icon: '🪔', desc: 'Traditional and designer festive oil lamps' },
-            { id: 'toran', name: 'Toran', image: 'https://i.ibb.co/5w0J6Q7/toran-logo.jpg', desc: 'Handcrafted floral & beaded door hangings' },
+            { 
+                id: 'toran', 
+                name: 'Toran', 
+                image: 'https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=400&q=80', 
+                desc: 'Handcrafted floral & beaded door hangings' 
+            },
             { id: 'hangings', name: 'Hangings', icon: '🏮', desc: 'Decorative ceiling & wall festive pieces' },
             { id: 'hampers', name: 'Hampers', icon: '🎁', desc: 'Curated festive gift & sweet baskets' },
             { id: 'gifts', name: 'Gifts and home decor', icon: '✨', desc: 'Exquisite home accents & return gifts' },
-            { id: 'rangoli', name: 'Rangoli', image: 'https://i.ibb.co/3s8x9Qf/rangoli-logo.jpg', desc: 'Stunning reusable floor art & stencils' },
+            { 
+                id: 'rangoli', 
+                name: 'Rangoli', 
+                image: 'https://images.unsplash.com/photo-1584286595398-a19b7d549dd4?auto=format&fit=crop&w=400&q=80', 
+                desc: 'Stunning reusable floor art & stencils' 
+            },
             { id: 'shubhlabh', name: 'Shubh Labh', icon: '🪷', desc: 'Auspicous door stickers and hanging plaques' }
         ];
 
