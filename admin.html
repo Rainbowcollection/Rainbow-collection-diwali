@@ -11,21 +11,23 @@
         .brand-title { font-family: 'Cinzel', serif; }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 min-h-screen">
+<body class="bg-[#040717] min-h-screen">
 
-    <!-- Passcode Gate -->
-    <div id="auth-box" class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-8 shadow-2xl text-center">
-        <h3 class="text-xl font-bold text-amber-300 brand-title mb-2">Restricted Area</h3>
-        <p class="text-xs text-gray-400 mb-6">Enter owner passcode to access product uploader.</p>
-        <input type="password" id="passcode-input" placeholder="Passcode" class="w-full bg-indigo-950/80 border border-indigo-800 rounded-xl p-3 text-sm text-white text-center mb-4 focus:outline-none focus:border-amber-400">
-        <button onclick="verifyPasscode()" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold tracking-wider uppercase transition">Unlock Portal</button>
-        <div class="mt-6">
-            <a href="index.html" class="text-xs text-indigo-400 underline">← Return to Public Store</a>
+    <!-- Full Screen Secure Passcode Overlay -->
+    <div id="auth-box" class="fixed inset-0 z-50 bg-[#040717] flex items-center justify-center p-4">
+        <div class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-8 shadow-2xl text-center">
+            <h3 class="text-xl font-bold text-amber-300 brand-title mb-2">Restricted Area</h3>
+            <p class="text-xs text-gray-400 mb-6">Enter owner passcode to access product uploader.</p>
+            <input type="password" id="passcode-input" placeholder="Passcode" class="w-full bg-indigo-950/80 border border-indigo-800 rounded-xl p-3 text-sm text-white text-center mb-4 focus:outline-none focus:border-amber-400">
+            <button onclick="verifyPasscode()" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold tracking-wider uppercase transition">Unlock Portal</button>
+            <div class="mt-6">
+                <a href="index.html" class="text-xs text-indigo-400 underline">← Return to Public Store</a>
+            </div>
         </div>
     </div>
 
-    <!-- Upload Panel -->
-    <div id="upload-panel" class="hidden bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl my-8">
+    <!-- Background Store / Upload Panel (Revealed after passcode) -->
+    <div id="upload-panel" class="hidden max-w-xl mx-auto p-6 sm:p-8 my-12 bg-[#0b102b] border border-indigo-800/80 rounded-3xl shadow-2xl">
         <div class="flex justify-between items-center mb-6 border-b border-indigo-900 pb-4">
             <div>
                 <h3 class="text-xl font-bold text-amber-300 brand-title">Owner Upload Portal</h3>
