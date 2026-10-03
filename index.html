@@ -14,25 +14,20 @@
             background-image: radial-gradient(circle at 50% 20%, #171f4c 0%, #060919 75%);
             min-height: 100vh;
         }
-        .brand-title {
-            font-family: 'Cinzel', serif;
-        }
+        .brand-title { font-family: 'Cinzel', serif; }
         .starry-bg {
             background: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
             background-size: 32px 32px;
         }
-        .rainbow-glow {
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
-        }
+        .rainbow-glow { box-shadow: 0 0 30px rgba(168, 85, 247, 0.2); }
     </style>
 </head>
 <body class="starry-bg">
 
-    <!-- Header / Banner -->
+    <!-- Header -->
     <header class="border-b border-indigo-900/50 bg-[#060919]/95 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 cursor-pointer" onclick="showDashboard()">
-                <!-- Logo representation matching dark circular theme -->
                 <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-950 via-purple-950 to-blue-900 border border-purple-500/40 flex items-center justify-center shadow-lg overflow-hidden relative">
                     <div class="absolute inset-0 flex items-center justify-center opacity-80">
                         <div class="w-6 h-6 rounded-full bg-red-500 mix-blend-screen -ml-3"></div>
@@ -60,42 +55,17 @@
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-
-        <!-- Vibrant Diwali Hero Banner -->
+        <!-- Hero Banner -->
         <div class="relative overflow-hidden text-center mb-12 py-14 px-6 rounded-3xl bg-gradient-to-r from-amber-950/40 via-purple-950/60 to-indigo-950/60 border border-amber-500/30 rainbow-glow">
-            <div class="absolute -right-10 -bottom-10 opacity-20 pointer-events-none text-9xl">🪔</div>
-            <div class="absolute -left-10 -top-10 opacity-20 pointer-events-none text-9xl">✨</div>
-            
             <span class="text-xs uppercase tracking-widest py-1.5 px-4 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold inline-block mb-3">Diwali Festive Showcase</span>
             <h2 class="text-4xl sm:text-6xl font-extrabold brand-title mb-4 text-white">Illuminate Your Celebrations</h2>
             <p class="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base mb-6">Explore our exclusive curation of handcrafted diyas, torans, hampers, and home decor. Tap any item to inquire instantly via WhatsApp.</p>
-            
-            <!-- Quick Image Preview Grid inside Hero -->
-            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 max-w-3xl mx-auto mt-6 opacity-90">
-                <div class="h-20 rounded-xl overflow-hidden border border-amber-500/40 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eef23f8?auto=format&fit=crop&w=300&q=80" alt="Diya" class="w-full h-full object-cover">
-                </div>
-                <div class="h-20 rounded-xl overflow-hidden border border-amber-500/40 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=300&q=80" alt="Toran" class="w-full h-full object-cover">
-                </div>
-                <div class="h-20 rounded-xl overflow-hidden border border-amber-500/40 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80" alt="Hamper" class="w-full h-full object-cover">
-                </div>
-                <div class="h-20 rounded-xl overflow-hidden border border-amber-500/40 shadow-md hidden sm:block">
-                    <img src="https://images.unsplash.com/photo-1584286595398-a19b7d549dd4?auto=format&fit=crop&w=300&q=80" alt="Rangoli" class="w-full h-full object-cover">
-                </div>
-                <div class="h-20 rounded-xl overflow-hidden border border-amber-500/40 shadow-md hidden sm:block">
-                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80" alt="Decor" class="w-full h-full object-cover">
-                </div>
-            </div>
         </div>
 
-        <!-- Category Cards Dashboard view -->
+        <!-- Category Cards Dashboard -->
         <div id="category-dashboard" class="mb-12">
             <h3 class="text-xl font-bold mb-6 text-amber-200 border-l-4 border-amber-400 pl-3">Explore Categories</h3>
-            <div id="category-cards-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Dynamically populated category cards -->
-            </div>
+            <div id="category-cards-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
         </div>
 
         <!-- Product Catalog Section -->
@@ -109,90 +79,23 @@
                     <input type="text" id="search-input" placeholder="Search products..." oninput="filterProducts()" class="bg-indigo-950/80 border border-indigo-800/80 rounded-xl px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 w-full sm:w-64">
                 </div>
             </div>
-
-            <!-- Products Grid -->
-            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Product Cards injected here -->
-            </div>
-            
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
             <div id="no-products" class="hidden text-center py-16 bg-indigo-950/20 rounded-2xl border border-indigo-900/30 mt-4">
                 <p class="text-gray-400 text-lg">No products found in this category yet.</p>
             </div>
         </div>
-
     </main>
 
-    <!-- Footer with Secret Owner Trigger -->
+    <!-- Footer (Public & Clean) -->
     <footer class="border-t border-indigo-900/50 mt-20 py-8 bg-[#040612] text-center text-xs text-gray-400">
         <p class="font-semibold text-gray-300">Rainbow Collection • Occasions made better</p>
         <p class="mt-1">Inquiries & Orders via WhatsApp: <a href="https://wa.me/85267032145" class="text-emerald-400 underline">+852-67032145</a></p>
-        <div class="mt-4">
-            <button onclick="promptOwnerAccess()" class="text-[10px] text-indigo-500/60 hover:text-amber-400 transition tracking-widest uppercase">⚙️ Owner Upload Portal</button>
-        </div>
     </footer>
-
-    <!-- Owner Password / Access Modal -->
-    <div id="owner-login-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center">
-            <h3 class="text-lg font-bold text-amber-300 brand-title mb-2">Owner Authentication</h3>
-            <p class="text-xs text-gray-400 mb-4">Enter owner passcode to upload products.</p>
-            <input type="password" id="owner-passcode" placeholder="Enter owner passcode" class="w-full bg-indigo-950/80 border border-indigo-800 rounded-xl p-3 text-sm text-white text-center mb-4 focus:outline-none focus:border-amber-400">
-            <div class="flex gap-2">
-                <button onclick="closeOwnerLogin()" class="flex-1 py-2.5 rounded-xl bg-gray-800 text-gray-300 text-xs font-medium">Cancel</button>
-                <button onclick="verifyOwner()" class="flex-1 py-2.5 rounded-xl bg-amber-600 text-white text-xs font-semibold hover:bg-amber-500">Access</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Owner / Admin Upload Modal -->
-    <div id="owner-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-[#0b102b] border border-indigo-800/80 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-amber-300 brand-title">Owner Portal: Upload Product</h3>
-                <button onclick="closeOwnerModal()" class="text-gray-400 hover:text-white text-xl">✕</button>
-            </div>
-            
-            <form id="product-form" onsubmit="handleProductSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Product Name</label>
-                    <input type="text" id="p-name" required placeholder="e.g. Royal Crystal Diya Set" class="w-full bg-indigo-950/60 border border-indigo-800/80 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-purple-500">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Price (HKD)</label>
-                        <input type="number" id="p-price" required placeholder="188" class="w-full bg-indigo-950/60 border border-indigo-800/80 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-purple-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Upload Picture from Device</label>
-                        <input type="file" id="p-image-file" accept="image/*" required class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-purple-950 file:text-purple-200 hover:file:bg-purple-900 cursor-pointer bg-indigo-950/60 border border-indigo-800/80 rounded-xl p-2">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Select Categories (Multi-select)</label>
-                    <div id="category-checkboxes" class="grid grid-cols-2 gap-2 mt-2 bg-indigo-950/40 p-3 rounded-xl border border-indigo-900/60">
-                        <!-- Checkboxes populated via JS -->
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Description</label>
-                    <textarea id="p-desc" rows="3" placeholder="Handcrafted with intricate details..." class="w-full bg-indigo-950/60 border border-indigo-800/80 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-purple-500"></textarea>
-                </div>
-
-                <div class="flex justify-end gap-3 pt-4">
-                    <button type="button" onclick="closeOwnerModal()" class="px-5 py-2.5 rounded-xl bg-gray-800 text-gray-300 text-sm font-medium hover:bg-gray-700 transition">Cancel</button>
-                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-semibold hover:from-emerald-500 hover:to-teal-500 transition shadow-lg">Save & Upload Product</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- Image Lightbox Modal -->
     <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden cursor-zoom-out">
         <div class="relative max-w-4xl max-h-[90vh]" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-2xl font-bold bg-gray-800/80 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-700">✕</button>
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-2xl font-bold bg-gray-800/80 w-8 h-8 rounded-full flex items-center justify-center">✕</button>
             <img id="lightbox-img" src="" alt="Enlarged view" class="max-h-[85vh] max-w-full rounded-2xl shadow-2xl border border-indigo-500/30 object-contain">
         </div>
     </div>
@@ -208,7 +111,8 @@
             { id: 'rangoli', name: 'Rangoli', icon: '🎨', desc: 'Stunning reusable floor art & stencils' }
         ];
 
-        let products = [
+        // Loads products stored in browser localStorage (populated via upload.html)
+        let products = JSON.parse(localStorage.getItem('rainbow_diwali_products')) || [
             {
                 id: 1,
                 name: 'Royal Hand-painted Terracotta Diyas (Set of 6)',
@@ -224,30 +128,6 @@
                 categories: ['toran', 'hangings'],
                 image: 'https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=600&q=80',
                 desc: 'Traditional artificial marigold toran accented with pearls.'
-            },
-            {
-                id: 3,
-                name: 'Festive Luxury Gourmet Hamper',
-                price: 680,
-                categories: ['hampers', 'gifts'],
-                image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
-                desc: 'Premium gift basket filled with festive treats, dry fruits & candles.'
-            },
-            {
-                id: 4,
-                name: 'Acrylic Reusable Rangoli Mats',
-                price: 180,
-                categories: ['rangoli', 'gifts'],
-                image: 'https://images.unsplash.com/photo-1584286595398-a19b7d549dd4?auto=format&fit=crop&w=600&q=80',
-                desc: 'Easy-to-place vibrant acrylic rangoli pieces with glittering crystals.'
-            },
-            {
-                id: 5,
-                name: 'Golden Hanging Lotus Tealight Holder',
-                price: 260,
-                categories: ['hangings', 'gifts'],
-                image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80',
-                desc: 'Elegant metallic lotus hanging piece designed for tealight candles.'
             }
         ];
 
@@ -255,14 +135,7 @@
 
         function initApp() {
             renderCategoryCards();
-            renderCategoryCheckboxes();
             showDashboard();
-
-            // Optional: Support secret URL parameter ?owner=true for instant admin access
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('owner') === 'true') {
-                document.getElementById('owner-modal').classList.remove('hidden');
-            }
         }
 
         function renderCategoryCards() {
@@ -299,28 +172,12 @@
             grid.innerHTML = html;
         }
 
-        function renderCategoryCheckboxes() {
-            const container = document.getElementById('category-checkboxes');
-            let html = '';
-            categories.filter(c => c.id !== 'all').forEach(cat => {
-                html += `
-                    <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer p-1.5 hover:bg-indigo-900/40 rounded-lg">
-                        <input type="checkbox" name="product-cat" value="${cat.id}" class="rounded border-indigo-700 text-purple-600 focus:ring-purple-500">
-                        <span>${cat.icon} ${cat.name}</span>
-                    </label>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
         function selectCategory(catId) {
             currentSelectedCategory = catId;
             const catObj = categories.find(c => c.id === catId);
             document.getElementById('current-category-title').innerText = catObj ? catObj.name : 'Products';
-            
             document.getElementById('category-dashboard').classList.add('hidden');
             document.getElementById('product-catalog-section').classList.remove('hidden');
-            
             filterProducts();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -335,44 +192,34 @@
         function filterProducts() {
             const query = document.getElementById('search-input').value.toLowerCase();
             let filtered = products;
-
             if (currentSelectedCategory !== 'all') {
                 filtered = filtered.filter(p => p.categories && p.categories.includes(currentSelectedCategory));
             }
-
             if (query) {
                 filtered = filtered.filter(p => p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
             }
-
             renderProducts(filtered);
         }
 
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const noProducts = document.getElementById('no-products');
-
             if (items.length === 0) {
                 grid.innerHTML = '';
                 noProducts.classList.remove('hidden');
                 return;
             }
-
             noProducts.classList.add('hidden');
             let html = '';
-
             items.forEach(p => {
                 let badgeHtml = '';
                 if (p.categories) {
                     p.categories.forEach(catId => {
                         const cInfo = categories.find(c => c.id === catId);
-                        if (cInfo) {
-                            badgeHtml += `<span class="text-[10px] bg-indigo-900/60 text-indigo-300 border border-indigo-700/50 px-2 py-0.5 rounded-full">${cInfo.name}</span>`;
-                        }
+                        if (cInfo) badgeHtml += `<span class="text-[10px] bg-indigo-900/60 text-indigo-300 border border-indigo-700/50 px-2 py-0.5 rounded-full">${cInfo.name}</span>`;
                     });
                 }
-
                 const whatsappMsg = encodeURIComponent(`Hi, I am interested in this product: ${p.name} (HKD $${p.price})`);
-
                 html += `
                     <div class="bg-indigo-950/60 border border-indigo-900/60 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl transition hover:border-indigo-700">
                         <div>
@@ -397,73 +244,6 @@
                 `;
             });
             grid.innerHTML = html;
-        }
-
-        function promptOwnerAccess() {
-            document.getElementById('owner-login-modal').classList.remove('hidden');
-        }
-
-        function closeOwnerLogin() {
-            document.getElementById('owner-login-modal').classList.add('hidden');
-            document.getElementById('owner-passcode').value = '';
-        }
-
-        function verifyOwner() {
-            const pass = document.getElementById('owner-passcode').value;
-            // Updated secret passcode requirement
-            if (pass === 'Ilovarainbowwithoutcolors') {
-                closeOwnerLogin();
-                document.getElementById('owner-modal').classList.remove('hidden');
-            } else {
-                alert('Incorrect owner passcode!');
-            }
-        }
-
-        function closeOwnerModal() {
-            document.getElementById('owner-modal').classList.add('hidden');
-            document.getElementById('product-form').reset();
-        }
-
-        function handleProductSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('p-name').value;
-            const price = parseFloat(document.getElementById('p-price').value);
-            const desc = document.getElementById('p-desc').value;
-            const fileInput = document.getElementById('p-image-file');
-
-            const selectedCheckboxes = document.querySelectorAll('input[name="product-cat"]:checked');
-            const selectedCategories = Array.from(selectedCheckboxes).map(cb => cb.value);
-
-            if (selectedCategories.length === 0) {
-                alert('Please select at least one category.');
-                return;
-            }
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const newProduct = {
-                        id: Date.now(),
-                        name,
-                        price,
-                        image: e.target.result,
-                        desc,
-                        categories: selectedCategories
-                    };
-
-                    products.unshift(newProduct);
-                    closeOwnerModal();
-                    renderCategoryCards();
-                    
-                    if (currentSelectedCategory === 'all' || selectedCategories.includes(currentSelectedCategory)) {
-                        filterProducts();
-                    } else {
-                        selectCategory('all');
-                    }
-                    alert('Product uploaded successfully!');
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
         }
 
         function openLightbox(imgSrc) {
